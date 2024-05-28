@@ -6,9 +6,9 @@ import authRoutes from './routes/auth.route.js'
 
 dotenv.config();
 
-mongoose.connect(process.env.MONGO).then(()=>{
+mongoose.connect('mongodb://localhost:27017/mern-blog').then(()=>{
     console.log('Connected to Database')
-}).catch(() => {
+}).catch((err) => {
     console.log(err);
 });
 const app = express();
@@ -27,6 +27,6 @@ app.use((err, req, res, next) => {
     res.status(statusCode).json({
         success: false,
         statusCode,
-        message,
+        message,   
     });
 });
